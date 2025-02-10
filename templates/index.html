@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SM Uitzendbureau</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Welkom bij SM Uitzendbureau</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('vacatures') }}">Vacatures</a></li>
+                <li><a href="{{ url_for('beheer') }}">Beheer</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <h2>De beste zorgvacatures op één plek</h2>
+        <p>Vind de perfecte baan in de zorgsector.</p>
+        <a href="{{ url_for('vacatures') }}" class="btn">Bekijk vacatures</a>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 SM Uitzendbureau. Alle rechten voorbehouden.</p>
+    </footer>
+</body>
+</html>

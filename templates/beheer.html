@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sollicitatiebeheer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Beheer Sollicitaties</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('vacatures') }}">Vacatures</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Ingediende sollicitaties</h2>
+        <ul>
+            {% for sollicitatie in sollicitaties %}
+            <li>
+                <p><strong>Naam:</strong> {{ sollicitatie.naam }}</p>
+                <p><strong>Email:</strong> {{ sollicitatie.email }}</p>
+                <p><strong>Motivatie:</strong> {{ sollicitatie.motivatie }}</p>
+                {% if not sollicitatie.goedgekeurd %}
+                <form action="{{ url_for('sollicitatie_goedkeuren', id=sollicitatie.id) }}" method="post">
+                    <button type="submit">Goedkeuren</button>
+                </form>
+                {% else %}
+                <p>✅ Goedgekeurd</p>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 SM Uitzendbureau. Alle rechten voorbehouden.</p>
+    </footer>
+</body>
+</html>

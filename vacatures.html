@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vacatures - SM Uitzendbureau</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Vacatures</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('vacatures') }}">Vacatures</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <h2>Beschikbare vacatures</h2>
+        <ul>
+            {% for vacature in vacatures %}
+            <li>
+                <h3>{{ vacature.functie }}</h3>
+                <p>Locatie: {{ vacature.locatie }}</p>
+                <p>Dienstverband: {{ vacature.dienstverband }}</p>
+                <a href="{{ url_for('solliciteren', vacature_id=vacature.id) }}" class="btn">Solliciteer</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 SM Uitzendbureau. Alle rechten voorbehouden.</p>
+    </footer>
+</body>
+</html>
